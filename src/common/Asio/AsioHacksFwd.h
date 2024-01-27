@@ -19,6 +19,7 @@
 #define AsioHacksFwd_h__
 
 #include <boost/version.hpp>
+#include <boost/asio/any_io_executor.hpp>
 
 /**
   Collection of forward declarations to improve compile time
@@ -48,17 +49,19 @@ namespace boost
         }
 
 #if BOOST_VERSION >= 106600
-        template <typename Time, typename TimeTraits>
-        class basic_deadline_timer;
+        //template <typename Time, typename TimeTraits>
+	template <typename Time, typename TimeTraits, typename Executor>
+	class basic_deadline_timer;
 
-        typedef basic_deadline_timer<posix_time::ptime, time_traits<posix_time::ptime>> deadline_timer;
+        //typedef basic_deadline_timer<posix_time::ptime, time_traits<posix_time::ptime>> deadline_timer;
+	typedef basic_deadline_timer<posix_time::ptime, time_traits<posix_time::ptime>, boost::asio::any_io_executor> deadline_timer;
 
         namespace ip
         {
-            template <typename InternetProtocol>
+            template <typename InternetProtocol,typename Executor>
             class basic_resolver;
 
-            typedef basic_resolver<tcp> tcp_resolver;
+            typedef basic_resolver<tcp,boost::asio::any_io_executor> tcp_resolver;
     }
 #else
         template <typename TimeType, typename TimeTraits>

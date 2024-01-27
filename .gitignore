@@ -8,6 +8,7 @@ syntax: glob
 .git/
 .git-rewrite/
 sql/world.sql
-
+*.bak
+build/
 ################################################################################
 syntax: regexp

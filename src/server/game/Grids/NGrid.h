@@ -78,7 +78,7 @@ class NGrid
 		}
 
         inline const uint32& GetGridId(void) const { return i_gridId; }
-        inline void SetGridId(const uint32 id) const { i_gridId = id; }
+        inline void SetGridId(const uint32 id)  { i_gridId = id; }
 		grid_state_t GetGridState(void) const { return i_cellstate; }
 		void SetGridState(grid_state_t s) { i_cellstate = s; }
         inline int32 getX() const { return i_x; }
